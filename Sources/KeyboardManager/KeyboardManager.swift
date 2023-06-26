@@ -83,6 +83,7 @@ open class KeyboardManager: NSObject, UIGestureRecognizerDelegate {
     public convenience init(inputAccessoryView: UIView) {
         self.init()
         self.bind(inputAccessoryView: inputAccessoryView)
+        print("WE DID IT IT BELONGS TO US")
     }
 
     /// Creates a `KeyboardManager` object that observes the state of the keyboard
