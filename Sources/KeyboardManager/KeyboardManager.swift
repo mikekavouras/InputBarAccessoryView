@@ -83,7 +83,6 @@ open class KeyboardManager: NSObject, UIGestureRecognizerDelegate {
     public convenience init(inputAccessoryView: UIView) {
         self.init()
         self.bind(inputAccessoryView: inputAccessoryView)
-        print("WE DID IT IT BELONGS TO US")
     }
 
     /// Creates a `KeyboardManager` object that observes the state of the keyboard
@@ -184,7 +183,7 @@ open func bind(inputAccessoryView: UIView, withAdditionalBottomSpace additionalB
         let keyboardHeight = notification.endFrame.height
         let animateAlongside = {
             self?.animateAlongside(notification) {
-                self?.constraints?.bottom?.constant = min(0, -keyboardHeight + (self?.bottomGap ?? 0)) - (additionalBottomSpace?() ?? 0)
+                // self?.constraints?.bottom?.constant = min(0, -keyboardHeight + (self?.bottomGap ?? 0)) - (additionalBottomSpace?() ?? 0)
                 self?.inputAccessoryView?.superview?.layoutIfNeeded()
             }
         }
@@ -209,7 +208,7 @@ open func bind(inputAccessoryView: UIView, withAdditionalBottomSpace additionalB
         }
         let animateAlongside = {
             self?.animateAlongside(notification) {
-                self?.constraints?.bottom?.constant = min(0, -keyboardHeight + (self?.bottomGap ?? 0)) - (additionalBottomSpace?() ?? 0)
+                // self?.constraints?.bottom?.constant = min(0, -keyboardHeight + (self?.bottomGap ?? 0)) - (additionalBottomSpace?() ?? 0)
                 self?.inputAccessoryView?.superview?.layoutIfNeeded()
             }
         }
@@ -228,7 +227,7 @@ open func bind(inputAccessoryView: UIView, withAdditionalBottomSpace additionalB
         guard notification.isForCurrentApp else { return }
         self?.justDidWillHide = true
         self?.animateAlongside(notification) { [weak self] in
-            self?.constraints?.bottom?.constant = self?.additionalInputViewBottomConstraintConstant() ?? 0
+            // self?.constraints?.bottom?.constant = self?.additionalInputViewBottomConstraintConstant() ?? 0
             self?.inputAccessoryView?.superview?.layoutIfNeeded()
         }
         DispatchQueue.main.async {
